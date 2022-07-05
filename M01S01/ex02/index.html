@@ -7,7 +7,7 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   >
-  <title>Calculator suprafete</title>
+  <title>Calculator Suprafata Dreptunghi</title>
 
   <link
     rel="stylesheet"
@@ -18,8 +18,35 @@
 </head>
 
 <body>
+  <form>
+    <fieldset>
+      <legend>Calculator Suprafata Dreptunghi</legend>
+      <label for="length">Lungime:</label>
+      <input
+        type="text"
+        name="length"
+        id="length"
+      >
 
+      <br> <br>
 
+      <label for="width">Latime:</label>
+      <input
+        type="text"
+        name="width"
+        id="width"
+      >
+
+      <br> <br>
+
+      <button
+        type="submit"
+        title="Calculeaza"
+      >Calculeaza</button>
+
+      <p>Rezultat: <span id="result"></span></p>
+    </fieldset>
+  </form>
 
   <script src="app.js"></script>
 
