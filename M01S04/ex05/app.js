@@ -1,6 +1,9 @@
 var number = prompt('Introdu un numar:');
+var maxNumber = prompt(
+  'Introdu un numar pana la care sa numere bucla si sa afiseze multiplii:',
+);
 
-for (var i = 5; i <= 1000; i++) {
+for (var i = 1; i <= maxNumber; i++) {
   console.log(i);
 
   if (i % number !== 0) {
