@@ -152,9 +152,12 @@ console.warn(
     in ordine inversa elementele arrayului skills.
   `,
 );
-person.skills.reverse().forEach(function (skill) {
-  console.log(skill);
-});
+person.skills
+  .slice()
+  .reverse()
+  .forEach(function (skill) {
+    console.log(skill);
+  });
 
 console.warn(
   `
@@ -238,7 +241,7 @@ console.warn(
   al prietenilor din arrayul friends.
   `,
 );
-person.friends.reverse().forEach(function (friend) {
+person.friends.slice.reverse().forEach(function (friend) {
   var fullName = friend.name + ' ' + friend.surname;
   console.log(fullName);
 });
