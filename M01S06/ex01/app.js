@@ -14,14 +14,16 @@ const car = {
   color: 'black',
   wheels: 4,
   speed: 50,
+  topSpeed: 160,
+  topReverseSpeed: -50,
   isTrunkOpen: false,
   areLightsOn: false,
 
   accelerate: function () {
-    this.speed++;
+    return this.speed++;
   },
   decelerate: function () {
-    this.speed--;
+    return this.speed--;
   },
 
   openTrunk: function () {
@@ -38,6 +40,22 @@ const car = {
     this.areLightsOn = false;
   },
 
+  setSpeed: function (speed) {
+    this.speed = speed;
+
+    if (speed > this.topSpeed) {
+      return (this.speed = this.topSpeed);
+    }
+
+    if (speed < this.topReverseSpeed) {
+      return (this.speed = this.topReverseSpeed);
+    }
+  },
+
+  stop: function () {
+    return (this.speed = 0);
+  },
+
   flashLights: function () {
     this.turnLightsOn();
     //handling 'this' keyword lost reference
@@ -49,3 +67,36 @@ const car = {
     }, 5000);
   },
 };
+
+// Adauga  o metoda numita setSpeed() care sa poata primi un parametru fix pentru viteza.
+// Metoda trebuie sa verifice ca nu se depasesc limitele inferioare si superioare, caz in
+// care se folosesc proprietatile topSpeed si topReverseSpeed
+
+console.warn(
+  `
+  Afiseaza propozitia: "Masina era marca make si se deplasa cu speed km/h.".
+  `,
+);
+console.log(
+  `Masina era marca ${car.make} si se deplaseaza cu ${car.speed} km/h.`,
+);
+
+console.warn(
+  `
+  Decelereaza masina cu 5 unitati apoi afiseaza propozitia: "Viteza noua este speed km/h".
+  `,
+);
+car.decelerate();
+car.decelerate();
+car.decelerate();
+car.decelerate();
+car.decelerate();
+
+console.log(`Viteza noua este de ${car.decelerate()} km/h.`);
+
+console.warn(
+  `
+  Adauga o metoda numita stop() care sa faca proprietatea speed 0, apoi afiseaza viteza.
+  `,
+);
+console.log(`${car.stop()} km/h`);
