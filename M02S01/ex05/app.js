@@ -1,21 +1,13 @@
 class Shape {
-  constructor(
-    posX,
-    posY, 
-    width, 
-    height, 
-    color, 
-    borderColor
-  ) {
-    this.posX = posX; 
-    this.posY = posY; 
-    this.height = height; 
-    this.width = width; 
-    this.color = color; 
+  constructor(posX, posY, width, height, color, borderColor) {
+    this.posX = posX;
+    this.posY = posY;
+    this.height = height;
+    this.width = width;
+    this.color = color;
     this.borderColor = borderColor;
   }
 
-  
   setPosX(x) {
     this.posX = x;
   }
@@ -33,7 +25,7 @@ class Shape {
   }
 
   setColor(c) {
-    this.color = c; 
+    this.color = c;
   }
 
   setBorderColor(bc) {
@@ -41,32 +33,16 @@ class Shape {
   }
 }
 
-class Rectangle extends Shape {
-  
-}
+class Rectangle extends Shape {}
 
 class Circle extends Shape {
-  constructor(
-    posX,
-    posY, 
-    radius, 
-    color, 
-    borderColor
-  ) {
-    super(
-      posX,
-      posY, 
-      radius, 
-      radius, 
-      color, 
-      borderColor
-    );
+  constructor(posX, posY, radius, color, borderColor) {
+    super(posX, posY, radius, radius, color, borderColor);
 
     this.borderRadius = this.setBorderRadius(radius);
   }
 
   setBorderRadius(br) {
-
     return br;
   }
 }
