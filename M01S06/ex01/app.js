@@ -20,10 +20,10 @@ const car = {
   areLightsOn: false,
 
   accelerate: function () {
-    return this.speed++;
+    this.speed++;
   },
   decelerate: function () {
-    return this.speed--;
+    this.speed--;
   },
 
   openTrunk: function () {
@@ -41,19 +41,23 @@ const car = {
   },
 
   setSpeed: function (speed) {
-    this.speed = speed;
-
     if (speed > this.topSpeed) {
-      return (this.speed = this.topSpeed);
+      this.speed = this.topSpeed;
+
+      return;
     }
 
     if (speed < this.topReverseSpeed) {
-      return (this.speed = this.topReverseSpeed);
+      this.speed = this.topReverseSpeed;
+
+      return;
     }
+
+    this.speed = speed;
   },
 
   stop: function () {
-    return (this.speed = 0);
+    this.speed = 0;
   },
 
   flashLights: function () {
@@ -86,13 +90,11 @@ console.warn(
   Decelereaza masina cu 5 unitati apoi afiseaza propozitia: "Viteza noua este speed km/h".
   `,
 );
-car.decelerate();
-car.decelerate();
-car.decelerate();
-car.decelerate();
-car.decelerate();
+for (i = 0; i < 5; i++) {
+  car.decelerate();
+}
 
-console.log(`Viteza noua este de ${car.decelerate()} km/h.`);
+console.log(`Viteza noua este de ${car.speed} km/h.`);
 
 console.warn(
   `

@@ -1,32 +1,27 @@
 function paragraphLog(message) {
-  const logContainerClass = 'logs';
-  let logContainer = document.querySelector(`.${logContainerClass}`);
+  for (let i = 0; i < arguments.length; i++) {
+    let message = arguments[i];
+    console.log(arguments[i]);
 
-  if (logContainer === null) {
-    logContainer = document.createElement('div');
-    logContainer.classList.add(logContainerClass);
+    const logContainerClass = 'logs';
+    let logContainer = document.querySelector(`.${logContainerClass}`);
 
-    document.body.append(logContainer);
+    if (logContainer === null) {
+      logContainer = document.createElement('div');
+      logContainer.classList.add(logContainerClass);
+
+      document.body.append(logContainer);
+    }
+
+    const paragraphElement = document.createElement('p');
+    paragraphElement.innerText = message;
+
+    logContainer.append(paragraphElement);
   }
-
-  const paragraphElement = document.createElement('p');
-  paragraphElement.innerText = message;
-
-  logContainer.append(paragraphElement);
 }
 
 console.domLog = paragraphLog;
 
 console.domLog('pauza');
 
-// Modifica exercitiul 06 astfel incat functia sa primeasca un numar
-//  nedeterminat de parametrii, similar cu console.log(). Foloseste
-//  variabila arguments a functiei pentru a rula o bucla prin parametri.
-
-function display() {
-  for (let i = 0; i < arguments.length; i++) {
-    console.log(arguments[i]);
-  }
-}
-
-display('Hello!', 'Hi!', 'Buna!', 'Konichiwa!');
+console.domLog('Hello!', 'Hi!', 'Buna!', 'Hey!');
