@@ -2,6 +2,7 @@ class Car {
   // v1
   topSpeed = 160;
   isTrunkOpen = false;
+  areLightsOn = false;
 
   constructor(make, color, wheels, speed) {
     this.make = make;
@@ -48,6 +49,23 @@ class Car {
   closeTrunk() {
     this.isTrunkOpen = false;
   }
+
+  turnLightsOn() {
+    this.areLightsOn = true;
+  }
+
+  turnLightsOff() {
+    this.areLightsOn = false;
+  }
+
+  flashLights() {
+    this.turnLightsOn();
+    const self = this;
+
+    setTimeout(function () {
+      self.turnLightsOff();
+    }, 3000);
+  }
 }
 
 const audi = new Car('Audi', 'black', 4, 50);
@@ -58,8 +76,12 @@ console.warn(`
 `);
 const opel = new Car('Opel', 'red', 4, 3);
 
-console.warn(
-  `
+const cars = [audi, opel];
 
-  `,
-);
+cars.forEach(function (car) {
+  console.log(
+    `Masina era marca ${car.make} si se deplasa cu ${car.speed} km/h.`,
+  );
+
+  console.log(`Viteza noua este ${car.speed - 5} km/h.`);
+});
