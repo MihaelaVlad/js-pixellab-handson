@@ -1,6 +1,7 @@
 class Car {
   areHazardsOn = false;
-  intervalID = 0;
+  intervalID = -1;
+  isLightOn = false;
 
   constructor(
     positionX,
@@ -71,12 +72,14 @@ class Car {
 
   turnLightOn() {
     this.lightFront.classList.add('light--on');
+    this.isLightOn = true;
 
     return this;
   }
 
   turnLightOff() {
     this.lightFront.classList.remove('light--on');
+    this.isLightOn = false;
 
     return this;
   }
@@ -98,13 +101,13 @@ class Car {
   }
 
   engageBreak() {
-    this.ligthBack.style.backgroundColor = 'red';
+    this.ligthBack.classList.add('light--on');
 
     return this;
   }
 
   disenagageBreak() {
-    this.ligthBack.style.backgroundColor = 'white';
+    this.ligthBack.classList.add('light--on');
 
     return this;
   }
@@ -120,17 +123,24 @@ class Car {
   }
 
   toggleHazards() {
+    if (this.areHazardsOn === true) {
+      clearInterval(this.intervalId);
+      this.areHazardsOn = false;
+
+      if (this.isLightOn === true) {
+        this.lightFront.classList.add('light--on');
+      } else {
+        this.lightFront.classList.remove('light--on');
+      }
+
+      return;
+    }
     const self = this;
 
-    setInterval(function () {
-      if (self.intervalID !== 0) {
-        self.turnLightOn();
-      } else {
-        self.turnLightOff();
-      }
-    }, 3000);
-
-    return;
+    self.intervalId = setInterval(function () {
+      self.lightFront.classList.toggle('light--on');
+    }, 1000);
+    self.areHazardsOn = true;
   }
 
   e(elementName) {
