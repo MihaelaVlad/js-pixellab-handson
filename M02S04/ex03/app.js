@@ -9,33 +9,44 @@ const heroData = {
   height: heroElement.clientHeight,
 };
 
-const axis = {
-  N: 'y',
-  S: 'y',
-  E: 'x',
-  W: 'x',
-  ArrowDown: 'y',
-  ArrowUp: 'y',
-  ArrowLeft: 'x',
-  ArrowRight: 'x',
+// define all properties on each line of motion, including
+// the axis and the direction
+// to go north (up) use y: 'back'
+// to go north east (up and right) use y: 'back' and x: 'front'
+// then use Object.keys (values is a better choice)
+// axis' now have coeffiecients that can be multiplied
+// by the step in order to reduce ifs
+const axisMotionMap = {
+  NW: {
+    x: -1,
+    y: -1,
+  },
+  N: {
+    y: -1,
+  },
+  NE: {
+    x: 1,
+    y: -1,
+  },
+  E: {
+    x: 1,
+  },
+  SE: {
+    x: 1,
+    y: 1,
+  },
+  S: { y: 1 },
+  SW: { x: -1, y: 1 },
+  W: { x: -1 },
 };
 
-const axis45 = {
-  NW: 'y',
-  SE: 'y',
-  NE: 'x',
-  SW: 'y',
-};
-
-const direction = {
-  N: 'back',
-  S: 'front',
-  E: 'front',
-  W: 'back',
-  ArrowDown: 'front',
-  ArrowUp: 'back',
-  ArrowLeft: 'back',
-  ArrowRight: 'front',
+// copy over the south, north, etc keys
+// note that they are copied by REFERENCE
+const keysMap = {
+  ArrowDown: axisMotionMap.S,
+  ArrowUp: axisMotionMap.N,
+  ArrowLeft: axisMotionMap.W,
+  ArrowRight: axisMotionMap.E,
 };
 
 renderHero();
@@ -50,26 +61,18 @@ controls.addEventListener('click', (event) => {
     return;
   }
   const value = button.dataset.direction;
-  const currentDirection = direction[value];
-  const currentAxis = axis[value];
-  const currentAxis45 = axis45[value];
+  const motionData = axisMotionMap[value];
 
-  updateHeroPosition(
-    currentAxis,
-    currentDirection,
-    currentAxis45,
-    currentDirection45,
-  );
+  updateHeroPosition(motionData);
 
   renderHero();
 });
 
 document.addEventListener('keydown', (event) => {
   const { code } = event;
-  const currentDirection = direction[code];
-  const currentAxis = axis[code];
+  const motionData = keysMap[code];
 
-  updateHeroPosition(currentAxis, currentDirection);
+  updateHeroPosition(motionData);
   renderHero();
 });
 
@@ -81,12 +84,17 @@ function renderHero() {
   heroElement.setAttribute('style', cssText);
 }
 
-function updateHeroPosition(currentAxis, currentDirection) {
-  // operator ternar
-  heroData[currentAxis] =
-    currentDirection === 'front'
-      ? heroData[currentAxis] + step
-      : heroData[currentAxis] - step;
+function updateHeroPosition(motionData) {
+  // axisArray will have
+  // either a position called x, or y or both
+  // a generic loop must be called
+  const axisArray = Object.keys(motionData);
+
+  axisArray.forEach((axis) => {
+    // since the coeficient could be negatively signed
+    // + will turn to minus
+    heroData[axis] = heroData[axis] + motionData[axis] * step;
+  });
 
   if (heroData.x <= 0) {
     heroData.x = 0;
