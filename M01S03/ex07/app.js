@@ -10,7 +10,7 @@ var person = {
   ],
   zipCode: '292929',
 };
-var difference = -153;
+var difference = -152;
 var petName = 'Ozz';
 
 // Afiseaza propozitia “ firstName, pet1, pet2, pet3 locuiesc toti in aceeasi casa”
@@ -106,3 +106,22 @@ console.log(
     difference +
     ' ani.',
 );
+
+console.warn(
+  `Afiseaza propozitia: “Intre Mihaela si Ozz este o diferenta de 152 ani”`,
+);
+console.log(
+  'Intre ' +
+    person.firstName +
+    ' si ' +
+    petName +
+    ' este o diferenta de ' +
+    difference +
+    ' ani.',
+);
+
+console.warn(`Afiseaza 152 diferenta de varsta dintre Mihaela si Ozz`);
+console.log(difference.toString());
+
+console.warn(`Sparkle age`);
+console.log((`${new Date().getFullYear()}` - person.pets[2].age).toString());

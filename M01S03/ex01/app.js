@@ -7,6 +7,10 @@ var object = {
 };
 
 console.log(object.name);
+console.log(`${new Date().getFullYear() - object.age}`);
+console.log(
+  `${object.name} s-a nascut in ${new Date().getFullYear() - object.age}.`,
+);
 console.log(object.age.toString());
 document.write(object.name + ' ' + object.surname + ' ');
 

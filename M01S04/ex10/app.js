@@ -100,7 +100,7 @@ console.warn(
   `,
 );
 var totalYears = 0;
-var currentYear = 2022;
+var currentYear = 2023;
 person.friends.forEach(function (friend) {
   var birthYear = currentYear - friend.age;
 
@@ -217,7 +217,7 @@ console.warn(
   `,
 );
 var totalYears = 0;
-var currentYear = 2022;
+var currentYear = 2023;
 person.friends.forEach(function (friend) {
   totalYears += currentYear - friend.age;
 });
@@ -241,7 +241,88 @@ console.warn(
   al prietenilor din arrayul friends.
   `,
 );
-person.friends.slice.reverse().forEach(function (friend) {
+person.friends.reverse().forEach(function (friend) {
   var fullName = friend.name + ' ' + friend.surname;
   console.log(fullName);
 });
+
+person.skills.reverse();
+
+person.skills.forEach(function (skill) {
+  console.log(`${person.name} cunoaste ${skill}!`);
+});
+
+person.skills.forEach(function (skill) {
+  if (!skill.toLowerCase().startsWith('j'))
+    console.log(`Numele tehnologiei ${skill} nu incepe cu litera j.`);
+});
+
+var message = 'Numele mari ale prietenilor mei sunt ';
+person.friends.forEach(function (friend, index, friends) {
+  var punctuation = ', ';
+  var friendsCount = friends.length;
+
+  if (index === friendsCount - 1) {
+    punctuation = '.';
+  }
+
+  message += friend.surname + punctuation;
+});
+console.log(message);
+
+person.skills.forEach(function (skill, index) {
+  if (index % 2 !== 0)
+    console.log(
+      `Tehnologia ${skill} se afla pe pozitia ${index}, impara, a arrayului.`,
+    );
+});
+
+person.skills.forEach(function (skill) {
+  if (skill.toLowerCase().includes('a')) {
+    console.log(`Tehnologia ${skill} contine litera "a".`);
+  }
+});
+
+var message = 'Prietenii mei se numesc ';
+person.friends.forEach(function (friend, index, friends) {
+  var punctuation = ', ';
+  var friendsCount = friends.length;
+
+  if (index === friendsCount - 1) {
+    punctuation = '.';
+  }
+
+  message += friend.name + ' ' + friend.surname + punctuation;
+});
+console.log(message);
+
+var totalAge = 0;
+person.friends.forEach(function (friend) {
+  if (friend.age >= 30) {
+    totalAge += friend.age;
+  }
+});
+console.log(`Varstele insumate sunt: ${totalAge.toString()}.`);
+
+person.friends.forEach(function (friend) {
+  var ageDiff = Math.abs(person.age - friend.age);
+
+  if (ageDiff >= 2) {
+    console.log(`Diferenta pentru ${friend.name}: ${ageDiff} ani.`);
+  }
+});
+
+var message = '';
+person.friends.forEach(function (friend) {
+  var ageDiff = Math.abs(person.age - friend.age);
+
+  message +=
+    'Intre ' +
+    person.name +
+    ' si ' +
+    friend.name +
+    ' este o diferenta de ' +
+    ageDiff +
+    ' ani. ';
+});
+console.log(message.trim());

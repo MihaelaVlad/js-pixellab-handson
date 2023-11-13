@@ -74,7 +74,7 @@ console.warn(
   “Intre Mihaela si Twix este o diferenta de xx ani.
   Intre Mihaela si Mars… ” (repeta pentru toate intrarile din array).`,
 );
-var currentYear = 2022;
+var currentYear = 2023;
 for (var i = 0; i < person.pets.length; i++) {
   var pet = person.pets[i];
   var ageDiff = Math.abs(currentYear - person.birthYear - pet.age);
@@ -116,7 +116,7 @@ console.warn(
 );
 var ageDiff = 0;
 var petAge = 0;
-var currentYear = 2022;
+var currentYear = 2023;
 for (var i = 0; i < person.pets.length; i++) {
   var pet = person.pets[i];
   var myAge = currentYear - person.birthYear;
@@ -152,3 +152,8 @@ Object.keys(person.pets).forEach(function (keyName, index, keys) {
   message += `${pet.species}${punctuation}`;
 });
 console.log(message);
+
+Object.keys(person.pets).forEach(function (keyName) {
+  var pet = person.pets[keyName];
+  console.log(`Animalul meu se numeste ${pet.name}.`);
+});

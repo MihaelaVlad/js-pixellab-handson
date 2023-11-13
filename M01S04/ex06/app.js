@@ -257,3 +257,150 @@ for (var i = 0; i < person.friends.length; i++) {
 
   console.log(ageDiff.toString());
 }
+
+console.warn(
+  `
+  Afiseaza diferenta de varsta dintre persoana si Carol.
+  `,
+);
+var ageDiff = 0;
+var friend = person.friends[2];
+var ageDiff = Math.abs(person.age - friend.age);
+
+console.log(`Diferenta de varsta este: ${ageDiff.toString()}.`);
+
+console.log(`${person.skills[0]} se afla pe indexul 0 al arrayului.`);
+
+console.log(`${person.skills[2]} se afla pe indexul 2 al arrayului.`);
+
+console.log(`${person.skills[4]} se afla pe indexul 4 al arrayului.`);
+
+console.log(`${person.skills[6]} se afla pe indexul 6 al arrayului.`);
+
+console.log(`Tehnologia ${person.skills[0]} nu incepe cu j!`);
+
+console.log(`Tehnologia ${person.skills[2]} nu incepe cu j!`);
+
+console.log(`Tehnologia ${person.skills[4]} nu incepe cu j!`);
+
+console.log(`Tehnologia ${person.skills[5]} nu incepe cu j!`);
+
+console.log(`Tehnologia ${person.skills[7]} nu incepe cu j!`);
+
+var sumAge = 0;
+for (var i = 0; i < person.friends.length; i++) {
+  var friend = person.friends[i];
+
+  if (friend.age >= 30) {
+    sumAge = sumAge + friend.age;
+  }
+}
+console.log(
+  `Suma varstelor persoanelor peste 30 de ani este: ${sumAge.toString()}.`,
+);
+
+var currentYear = 2023;
+var sumYears = 0;
+for (var i = 0; i < person.friends.length; i++) {
+  var friend = person.friends[i];
+
+  sumYears = sumYears + currentYear - friend.age;
+}
+console.log(`Suma anilor de nastere este: ${sumYears.toString()}.`);
+
+console.warn(
+  `
+  Afiseaza fraza: "Intre Mihaela si Larry este o diferenta de xx ani. Intre Mihaela si Steven... ".
+  Repeta pentru tot arrayul friends.
+  `,
+);
+var message = '';
+var friend = person.friends[0];
+var ageDiff = Math.abs(person.age - friend.age);
+message = 'Diferenta de varsta mai mare de 2 ani este ' + ageDiff + '.';
+console.log(message);
+
+var friend = person.friends[1];
+var ageDiff = Math.abs(person.age - friend.age);
+message = 'Diferenta de varsta mai mare de 2 ani este ' + ageDiff + '.';
+console.log(message);
+
+var friend = person.friends[2];
+var ageDiff = Math.abs(person.age - friend.age);
+message = 'Diferenta de varsta mai mare de 2 ani este ' + ageDiff + '.';
+console.log(message);
+
+var message = '';
+for (var i = 0; i < person.friends.length; i++) {
+  var friend = person.friends[i];
+  var ageDiff = Math.abs(person.age - friend.age);
+
+  if (ageDiff === 7 || ageDiff <= 5) {
+    message +=
+      'Intre ' +
+      person.name +
+      ' si ' +
+      friend.name +
+      ' este o diferenta de ' +
+      ageDiff +
+      ' ani. ';
+  }
+}
+console.log(message.trim());
+
+console.log(
+  `Tehnologia ${person.skills[0]} are ${person.skills[0].length} caractere.`,
+);
+
+console.log(
+  `Tehnologia ${person.skills[1]} are ${person.skills[1].length} caractere.`,
+);
+
+console.log(
+  `Tehnologia ${person.skills[2]} are ${person.skills[2].length} caractere.`,
+);
+
+console.log(
+  `Tehnologia ${person.skills[3]} are ${person.skills[3].length} caractere.`,
+);
+
+console.log(
+  `Tehnologia ${person.skills[4]} are ${person.skills[4].length} caractere.`,
+);
+
+console.log(
+  `Tehnologia ${person.skills[5]} are ${person.skills[5].length} caractere.`,
+);
+
+console.log(
+  `Tehnologia ${person.skills[6]} are ${person.skills[6].length} caractere.`,
+);
+
+console.log(
+  `Tehnologia ${person.skills[7]} are ${person.skills[7].length} caractere.`,
+);
+
+console.log(
+  `Tehnologia ${person.skills[2]} incepe cu litera "${person.skills[2].slice(
+    0,
+    1,
+  )}".`,
+);
+
+console.log(
+  `Tehnologia ${person.skills[4]} incepe cu litera "${person.skills[4].slice(
+    0,
+    1,
+  )}".`,
+);
+
+var message = '';
+var friend = person.friends[0];
+var ageDiff = Math.abs(person.age - friend.age);
+message = 'Diferenta de varsta este: ' + ageDiff + '.';
+console.log(message);
+
+var friend = person.friends[1];
+var ageDiff = Math.abs(person.age - friend.age);
+message = 'Diferenta de varsta este: ' + ageDiff + '.';
+console.log(message);

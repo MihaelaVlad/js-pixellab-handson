@@ -84,3 +84,10 @@ console.warn(
 console.log(
   `Data curenta este ${dateBuilder[2]()} ${dateBuilder[1]()} ${dateBuilder[0]()}.`,
 );
+
+console.warn(
+  `
+  Afiseaza propozitia: “Astazi este Miercuri.”.
+  `,
+);
+console.log(`Astazi este ${dateBuilder[3]()}.`);

@@ -84,4 +84,5 @@ cars.forEach(function (car) {
   );
 
   console.log(`Viteza noua este ${car.speed - 5} km/h.`);
+  console.log(`Viteza noua este ${car.speed} km/h.`);
 });

@@ -37,6 +37,11 @@ console.warn(
 console.log((2022 - person.friends.larry.age).toString());
 
 console.warn(
+  `Folosind anul curent calculeaza si afiseaza anul de nastere al lui Carol`,
+);
+console.log((2022 - person.friends.carol.age).toString());
+
+console.warn(
   'Calculeaza diferenta si afiseaza propozitia: “Steven este cu xx ani mai mare decat Larry.” folosind proprietatile name. ',
 );
 console.log(
@@ -145,3 +150,5 @@ console.log(
     person.friends.steven.name.length - person.friends.carol.name.length
   ).toString(),
 );
+
+console.log();
